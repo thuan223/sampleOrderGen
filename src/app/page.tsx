@@ -197,11 +197,16 @@ export default function OrderPage() {
               {JSON.stringify(resultData, null, 2)}
             </div>
 
-            {resultData.result && typeof resultData.result === 'string' && resultData.result.startsWith('mytelpay') && (
-              <a href={resultData.result} className="btn-deeplink">
-                Open MytelPay App Now
-              </a>
-            )}
+            <a
+              href={resultData.result || '#'}
+              className="btn-deeplink"
+              onClick={(e) => {
+                if (!resultData.result) e.preventDefault();
+                else window.location.href = resultData.result;
+              }}
+            >
+              Open MytelPay App Now
+            </a>
           </div>
         )}
       </div>
