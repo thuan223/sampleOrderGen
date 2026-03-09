@@ -72,13 +72,6 @@ export default function OrderPage() {
 
       setResultData(data);
 
-      // Auto-trigger deeplink if result property is present and valid
-      if (data.result && data.result.startsWith('mytelpayv2://')) {
-        setTimeout(() => {
-          window.location.href = data.result;
-        }, 1500); // give the user 1.5 seconds to see the result before redirecting
-      }
-
     } catch (err: any) {
       console.error(err);
       setErrorMsg(err.message);
